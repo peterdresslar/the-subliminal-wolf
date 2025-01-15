@@ -42,7 +42,6 @@ wheels/
 
 # Project specific
 *.pdf
-*.png
 *.jpg
 *.jpeg
 *.gif
