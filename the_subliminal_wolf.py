@@ -215,7 +215,6 @@ def process_beta(x, theta, x_0):
     k = 1 # a base cost
     eps = 1e-6 # a small number to avoid division by zero
     # the following is a mangled inverted price elasticity of supply function from Khan Academy.
-    # cursor then helped me fix the division by zero errors. not a proud set of moments.
     p = k * (s_0 / (s + eps)) # the cost
     # and then we see how this cost changes the beta
     # except, with wolves, theta is one, and they totally ignore the cost. 
@@ -541,7 +540,7 @@ def get_reference_ODE(model_params, model_time):
     times = np.linspace(0, t_end, model_time['tmax'])
     x0 = [model_params['s_start'], model_params['w_start']]
 
-    integration = odeint(dx_dt, x0, times, args=(alpha, beta, gamma, delta)) # via cursor, verify this
+    integration = odeint(dx_dt, x0, times, args=(alpha, beta, gamma, delta))
     ode_df = pd.DataFrame({
         't': times,
         's': integration[:,0],
